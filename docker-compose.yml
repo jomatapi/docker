@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+  haproxy:
+    image: jomatapi/haproxy:1.0
+    ports:
+      - 8080:80
+    restart: always
+
+  gunicorn:
+    depends_on:
+      - haproxy
+    image: jomatapi/gunicorn:1.0
+    restart: always
